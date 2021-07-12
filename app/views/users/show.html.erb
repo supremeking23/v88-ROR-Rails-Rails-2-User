@@ -1,6 +1,8 @@
 <h1><%= @user.name%></h1>
 <p>hihi</p>
 
+<a href="users/<%= @user.id %>">Edit Profile</a>
+
 
 <form action="/sessions/logout" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

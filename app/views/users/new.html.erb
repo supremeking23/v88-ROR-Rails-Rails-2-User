@@ -1,2 +1,18 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<% if flash[:error] %>
+<% flash[:error].each do |note| %>
+<p id="notice"><%= note %></p>
+<% end %>
+<% end %>
+
+<form action="/users/create" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="name">Name</label>
+    <input type="text" name="user[name]" id="name" value="">
+    <label for="email">Email</label>
+    <input type="text" name="user[email]" id="email" value="">
+    <label for="password">Password</label>
+    <input type="password" name="user[password]" id="password" value="">
+    <label for="password_corfirmation">Password Confirmation</label>
+    <input type="password" name="user[password_corfirmation]" id="password_corfirmation" value="">
+    <input type="submit" value="Join">
+</form>

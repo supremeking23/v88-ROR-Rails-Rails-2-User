@@ -1,0 +1,14 @@
+<% if flash[:error] %>
+<% flash[:error].each do |note| %>
+<p id="notice"><%= note %></p>
+<% end %>
+<% end %>
+
+<form action="/sessions" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" value="">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" value="">
+    <input type="submit" value="Log In">
+</form>

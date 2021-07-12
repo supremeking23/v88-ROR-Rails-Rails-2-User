@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>DojoSecrets</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -8,9 +9,22 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 
-  <body>
+<body>
+    <% if flash[:errors] %>
+    <% flash[:errors].each do |e| %>
+    <%= e %>
+    <% end %>
+    <% end %>
+    <% if current_user %>
+    <form action="/sessions/<%=current_user.id%>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Log Out">
+    </form>
+    <% end %>
     <%= yield %>
-  </body>
+</body>
+
 </html>

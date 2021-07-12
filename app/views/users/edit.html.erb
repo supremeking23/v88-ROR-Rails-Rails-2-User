@@ -1,2 +1,33 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% if flash[:alert] %>
+<% flash[:alert].each do |note| %>
+<p id="notice"><%= note %></p>
+<% end %>
+<% end %>
+
+<% if flash[:notice] %>
+<div class="row">
+    <div style="color: #fff" class="col s12 green darken-3">
+        <p><%=flash[:notice]%></p>
+    </div>
+</div>
+<% end %>
+
+
+<form action="/users/<%= @user.id%>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch" />
+    <input type="hidden" name="id" value="<%= @user.id %>">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="<%= @user.name %>">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" value="<%= @user.email %>">
+
+    <input type="submit" value="Update">
+</form>
+
+
+<form action="/users/<%= @user.id%>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete" />
+    <input type="submit" value="Delete Account">
+</form>

@@ -2,9 +2,32 @@
 <p>hihi</p>
 
 
+<% if flash[:notice] %>
+<div class="row">
+    <div style="color: #fff" class="col s12 green darken-3">
+        <p><%=flash[:notice]%></p>
+    </div>
+</div>
+<% end %>
+
+
+<form action="/secrets" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <input type="hidden" name="user_id" value="<%= @user.id %>">
+    <label for="content">Content</label>
+    <textarea name="content" id="content"></textarea>
+    <input type="submit" value="Create Secret">
+</form>
 
 
 
+<form action="/secrets" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete" />
+    <input type="hidden" name="user_id" value="<%= @user.id %>">
+    <input type="submit" value="Delete Secret">
+</form>
 
 
 

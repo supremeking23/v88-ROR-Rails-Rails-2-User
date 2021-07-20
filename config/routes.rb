@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
+ 
+  get 'likes/destroy'
   get 'secrets' => "secrets#index"
-  get 'users/edit'
+  get 'users/:id/edit' =>"users#edit"
   get 'sessions/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
@@ -18,4 +20,8 @@ Rails.application.routes.draw do
   post 'sessions/logout'
   post 'secrets' => 'secrets#create'
   delete 'secrets' => 'secrets#destroy'
+
+
+  post 'likes' => 'likes#create'
+  patch 'likes' => 'likes#update'
 end

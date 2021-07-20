@@ -18,7 +18,7 @@
     <% end %>
     <% end %>
     <% if current_user %>
-    <form action="/sessions/<%=current_user.id%>" method="post">
+    <form action="/sessions/<%=current_user.id%>" method="post" style="margin-top:20px">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Log Out">

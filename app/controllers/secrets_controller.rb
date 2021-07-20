@@ -17,10 +17,13 @@ class SecretsController < ApplicationController
   end
 
   def destroy 
-    Secret.destroy_all
+    # Secret.destroy_all
+    secret = Secret.find(params[:secret_id])
+    secret.destroy
+    redirect_to "/secrets"
+    # @user = User.find(params[:user_id])
+    #redirect_to "/users/#{@user.id}"
 
-    @user = User.find(params[:user_id])
-    redirect_to "/users/#{@user.id}"
   end
 
 

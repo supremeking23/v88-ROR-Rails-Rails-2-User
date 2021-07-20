@@ -8,7 +8,9 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user != nil
       # redirect_to "/users/#{@user.id}"
-
+      # session[:current_user] =   @user
+      # session[:current_user_id] = @user.id
+      session[:user_id] = @user.id
       if @user.try(:authenticate,params[:password]) != false
         redirect_to "/users/#{@user.id}"
       else
@@ -31,7 +33,7 @@ class SessionsController < ApplicationController
   def show
   end
 
-  def logout 
+  def destroy 
     reset_session
     redirect_to "/sessions/new"
   end

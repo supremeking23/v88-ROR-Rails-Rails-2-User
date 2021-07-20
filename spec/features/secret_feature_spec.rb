@@ -47,7 +47,7 @@ feature "secret features" do
             expect(page).to have_text(@secret2.content)
         end
 
-        scenario "destroy scret from index page, redirects to user profile page" do 
+        scenario "destroy secret from index page, redirects to user profile page" do 
             all('Delete Secret').each do |btn|
                 btn.click
                 expect(current_path).to eq("/users/#{@user.id}")
